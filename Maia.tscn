@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://bix2b0ttpd3vd"]
+
+[ext_resource type="Script" path="res://Maia.gd" id="1_1btaw"]
+[ext_resource type="Texture2D" uid="uid://c4xxmli7b6bnq" path="res://art/maiaidle1.png" id="2_wjdxv"]
+[ext_resource type="Texture2D" uid="uid://bqygvaxb5km2o" path="res://art/maiaidle2.png" id="3_r53t0"]
+[ext_resource type="Texture2D" uid="uid://3j2h68pix4um" path="res://art/maiaidle3.png" id="4_xl8fv"]
+[ext_resource type="Texture2D" uid="uid://cw28qyqbmxpgy" path="res://art/maiajump1.png" id="5_frras"]
+[ext_resource type="Texture2D" uid="uid://btd2nnfn5hy0d" path="res://art/maiawalk1.png" id="5_hnvr7"]
+[ext_resource type="Texture2D" uid="uid://bqqto475akt6p" path="res://art/maiawalk2.png" id="6_6n042"]
+[ext_resource type="Texture2D" uid="uid://ccjkymm23j8te" path="res://art/maiajump2.png" id="6_68ssh"]
+[ext_resource type="Texture2D" uid="uid://bjwhndbebmntd" path="res://art/maiawalk3.png" id="7_qbctu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ihl5"]
+radius = 12.0
+height = 62.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sj4d0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wjdxv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r53t0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xl8fv")
+}],
+"loop": true,
+"name": &"maiaIdle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_frras")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_68ssh")
+}],
+"loop": true,
+"name": &"maiaJump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hnvr7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6n042")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qbctu")
+}],
+"loop": true,
+"name": &"maiaWalkRight",
+"speed": 5.0
+}]
+
+[node name="Maia" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_1btaw")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_3ihl5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_sj4d0")
+animation = &"maiaJump"
+frame = 1
+frame_progress = 0.827288

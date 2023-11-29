@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://jglnt1iyidfo"]
+
+[ext_resource type="Texture2D" uid="uid://cxsxvcqtn86im" path="res://art/ysaidle1.png" id="1_ulfn2"]
+[ext_resource type="Script" path="res://ysa.gd" id="1_uliit"]
+[ext_resource type="Texture2D" uid="uid://cq6hllen618nf" path="res://art/ysaidle2.png" id="2_5au0e"]
+[ext_resource type="Texture2D" uid="uid://bqby27ch3rqs8" path="res://art/ysawalk1.png" id="4_6vmrg"]
+[ext_resource type="Texture2D" uid="uid://o5cgqg8dsle7" path="res://art/ysajump1.png" id="4_cp347"]
+[ext_resource type="Texture2D" uid="uid://4le0ebmpmxr5" path="res://art/ysajump2.png" id="5_hph8i"]
+[ext_resource type="Texture2D" uid="uid://daalx74cu3lan" path="res://art/ysawalk2.png" id="5_yh2s4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kmbba"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ulfn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5au0e")
+}],
+"loop": true,
+"name": &"ysaIdle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cp347")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hph8i")
+}],
+"loop": true,
+"name": &"ysaJump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_6vmrg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yh2s4")
+}],
+"loop": true,
+"name": &"ysaWalkRight",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ubf7m"]
+radius = 9.0
+height = 52.0
+
+[node name="Ysa" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_uliit")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_kmbba")
+animation = &"ysaIdle"
+frame_progress = 0.463423
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_ubf7m")
