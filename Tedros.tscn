@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://g1fv8kis4mq2"]
+
+[ext_resource type="Texture2D" uid="uid://du61dt5uis3uw" path="res://art/tedroswalk1.png" id="1_fmxdk"]
+[ext_resource type="Script" path="res://Tedros.gd" id="1_q1qs4"]
+[ext_resource type="Texture2D" uid="uid://dat3qjrtspaw1" path="res://art/Tedroswalk2.png" id="2_wrj1p"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_10m1x"]
+height = 36.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8kibf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fmxdk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wrj1p")
+}],
+"loop": true,
+"name": &"tedrosWalkLeft",
+"speed": 5.0
+}]
+
+[node name="Tedros" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_q1qs4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 3)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_10m1x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_8kibf")
+animation = &"tedrosWalkLeft"
+frame_progress = 0.682142
